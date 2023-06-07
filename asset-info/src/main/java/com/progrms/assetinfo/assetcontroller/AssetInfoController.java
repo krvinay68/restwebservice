@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Locale;
 
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -39,6 +40,10 @@ public class AssetInfoController {
     @Autowired
     MessageSource messageSource;
 
+    //dyanmic port
+    @Autowired
+    Environment environment;
+
     @GetMapping("/about")
     public String testM(){
         String s1="IMPLEMENTATION JPA";
@@ -51,8 +56,11 @@ public class AssetInfoController {
         String s8="IMPLEMENTATION OF INTERNATIONALIZATION";
         String s9="IMPLEMENTATION OF VERSIONING";
         String s10="IMPLEMENTATION OF CONTENT NEGOTIATION NOTHING EITHER JSON RESPONSE OR XML";
+        String s11="IMPLEMENTATION OF DYNAMIC PORT";
+        return s1+s2+s3+s4+s5+s6+s7+s8+s9+s10+s11;
 
-        return s1+s2+s3+s4+s5+s6+s7+s8+s9+s10;
+        //dynamic port
+       // String port=environment.getProperty("local.server.port");
     }
     
     @PostMapping("/asset/create")    
